@@ -1,0 +1,185 @@
+This is my Devlog
+
+A generic 2D game that demonstrates all the basics of Unity6
+
+Get player input: Legacy 
+Move Objects
+Animate Objects: Sprite Sheets
+Create / destroy objects
+UI and UI updating
+Refer to other classes
+Camera control
+
+Textures
+Shaders
+
+Skybox
+
+
+
+Desiging our C# Code:
+Creating a code Pattern:
+C# Diagram:
+
+You design your kitchen cabinets according to how you plan to use your kitchen... 
+We design our C# Classes according to how we plan to use them.
+
+Move Objects:
+	One Triangle moves with Physics
+	One Triangle is animated
+	One Triangle is translated
+
+	Do all three move when player presses W
+	OR
+	Can the player choose which object is the active object?
+
+	Logic Required:
+		Who is the active object?
+	
+	Each Triangle has their own code, 
+	and they are each coded to work only if their local bool is true
+
+	How to update the 
+	Triangles' movement classes need a reference to the Logic script 
+
+
+	OR
+
+	Each triangle has it's own method
+	Method is only called by logic class when Logic's bool is true
+
+	Logic class needs a reference to the triangleGOs
+
+	DECISION:
+		Make this simpler!  OMG!
+
+
+Player:
+		Triangle 1: RB2D Physics AddForce(Vector3*Speed*Time.time)
+
+Friend:
+		Triangle 2: Ass "speed" to Position.x and Position.y
+		
+Enemy:
+		Triangle does not move, nimates on collision
+
+Classes
+		Rigidbody2D
+		Animator
+		AudioSource
+
+Scripts
+		PlayOnCollision2D
+		
+Methods:		
+		OnCollisionEnter2D()
+		OnMouseDown()
+		Input.GetKey(Keycode.__)
+
+		Timer
+		Slider Value
+		Score.text
+		Score value
+
+		Invoke(Method())
+		Delay
+
+		Play several sounds at once
+		Stop sounds
+		Start others
+
+		Use all the same modular bits of code to create two different games.
+
+		LevelDesign class: 
+		At start, turns on the desired GO.  
+		Has a PublicGO and designer drags in the GO they want for that level.  
+		Null check: If designer forgets to drag in a GO, one is automatically chosen...
+		HOW?  Find by name, what if the GO are turned off?  Use transform?  
+
+
+
+		TELL STUDENTS:
+
+		// Classes to know well:
+			GameObject
+			Transform
+			Rigidbody2D
+			Collision2D
+			Collider2D
+			Vector3
+
+		// Manual = What Unity can do
+		// Scripting is how to do it
+
+
+
+
+		// Abbreviations: only use very common ones Rb2D, GO, 
+
+		// Dream it
+		// Start it
+		// Dream more specifically
+		// Start again
+		// Dream much more specifically
+		// Make a TODO list: 
+			// What do I want my player to be able to do?
+			// What do I need to develop do that my player can do it?
+			// Break down the tasks for development!
+		// Stop dreaming and start crossing tsaks off the list
+		// Yes, now you are just working, not designing
+		// Start working: Race against the clock to keep it intresting
+
+
+		My Tasks:
+		Make scripts that can be added to GO, 
+
+		1. Movement with Physics
+		2. Movement with transform.position
+		3. PlayOnCollision2D
+		4. UpdateScore Scoreboard keeps and updates the score
+		5. PlayOnTriggerEnter2D
+		6. ScoreOnTriggerEnter2D  add to a GO that we want to add points
+
+		TODO:	
+		Music
+		Reset Scene
+		UI: Text and updating text at runtime
+		Collider2D.OnTriggerEnter2D()
+		Singleton?
+
+
+		SOUNDFX
+
+		https://freesound.org/people/harrietniamh
+		Video Game Coin by harrietniamh -- https://freesound.org/s/415083/ -- License: Attribution 4.0
+		Laser by harrietniamh -- https://freesound.org/s/415082/ -- License: Attribution 4.0
+		Video Game Jump by harrietniamh -- https://freesound.org/s/415081/ -- License: Attribution 4.0
+		Video Game Blip by harrietniamh -- https://freesound.org/s/415080/ -- License: Attribution 4.0
+		Video Game Death Sound Effect by harrietniamh -- https://freesound.org/s/415079/ -- License: Attribution 4.0
+
+		Music Tracks
+		107 BPM Industrial Drum Loop #48 (WAV) by looplicator -- https://freesound.org/s/730423/ -- License: Attribution 4.0
+		Deep Melodic House Music.wav by Muna_Alaneme -- https://freesound.org/s/700519/ -- License: Attribution 4.0
+		melodic001.wav by DJ Rico -- https://freesound.org/s/27870/ -- License: Creative Commons 0
+		safMetaEMPTY_N_110.wav by plagasul -- https://freesound.org/s/382632/ -- License: Attribution 4.0
+		Floyd Filtertron Riding G.wav by aceinet -- https://freesound.org/s/424240/ -- License: Attribution 4.0
+		simple breakup by aceinet -- https://freesound.org/s/719011/ -- License: Creative Commons 0
+		F chord noise scratches by aceinet -- https://freesound.org/s/718850/ -- License: Creative Commons 0
+		E flat 150 bpm cleanish by aceinet -- https://freesound.org/s/718849/ -- License: Creative Commons 0
+		G flat 120 bpm cleanish modulation by aceinet -- https://freesound.org/s/718853/ -- License: Attribution 4.0
+		G sharp 120 delay reverb lick by aceinet -- https://freesound.org/s/718854/ -- License: Creative Commons 0
+		guitar transitions 05 - fast walking bass by busabx -- https://freesound.org/s/639211/ -- License: Attribution 4.0
+
+		Sounds similar to G sharp 120 delay reverb lick by aceinet
+		https://freesound.org/people/aceinet/sounds/718854/?attribution=javascript%3Avoid%280%29%3B&similar=%5Bobject+HTMLButtonElement%5D
+
+
+
+		25_0708 
+
+		To play more than one clip with the same audiosource, use PlayOneShot
+            MyAudioSource.PlayOneShot(MySoundFX.CollisionWithEnemy);
+
+			Play() will only play if there is a clip in its public clip spot, and it only plays that clip.
+
+
